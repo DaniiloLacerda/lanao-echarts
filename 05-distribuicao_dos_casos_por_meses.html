@@ -1,0 +1,122 @@
+<!--
+	THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/en/editor.html?c=line-simple&code=PYBwLglsB2AEC8sDeAoWtJgDYFMBcya6GOAHmAQOQAiEAzmAE4QBGArhAOcDHwsAJjlgBjAIZ1gdWCGCNYAWxx0llADRF0dNizBkKsGkNEBzSWD6DYAJgAMVq7FFgAl49MMLQ21YDMlIgC-6ujmwFiQIASoxBjMxsY4jFSipPRqGo6pdAAKwBDQukmEMSEAniD4BsKMknTpJbBYoiw4WFEZMSyiwgDWxjVs0PwAwmGyVADEAGyiAOwAnAAcAKz-DQEZG-hBRKFYLMCk7TEAZjhObIyV0SV0ogBuOACCdACS8ibXW8TfO-j9EH4x2IuBO-koPgApPViHEABbggAs0OCxAOYHM8ioUJh6GEMDAonyABlmq0CEw2DhAqjSE8sgQANoZG4xMDlSqUMS6UyMUq4tHAQb8UR8gDiokisBOoiwylRMRFhKZlCepnsagMAGUcGANaoDAB5Nh6qyaygAOWA931BmoOAAXrbKAApUTQXzmgBiOBtfgNlAAsqLPQGnixGKGDMGIFHXYM4y62Fg42rgJ6ALqbIgZ1Glen0JksjoYDlUe6yqlrH451HKZhKIsxVnEaCiRRUYbiSQCsoVKhYfI4XuwBjdHpUAAqwEJWBHdHkwBncIIMrlOAVIKHWvZuGBDQA7oCwCvYABGEt_EpNFptYoNUdw4AHimMKmbmIyOgQSAwKjmEBqxiK8YlFc4d1KPd7waUBuh_UoCBsAA6RYP2IfEsHGWBoBwA9YBwYQ4VFMA6CQ_pJThCBhCQ4kh1FMVGFEfgIBwAoAAobANTjYG4s8DWZB9iBbQTgBOE5lH0TiSwaDCsMoCZZhYREfHmWYgIfECH2Eh9RPE3UCD46SSlkopKEYYwWDYvjz3mazfCmABKdT1iMjMHMvNCcHkEAiO_Oh9xKE5gGENh_IMesWLqDySyVUQmTPTiEtUM8rGSxFktS2ZksSrLUKmNLVF8QrllzIhs3QLMAgAbiAA
+	⚠ Please be aware that this chart is not an official demo of Apache ECharts but is made by user-generated code.
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    export const option = {
+  title: {
+    text: 'Distribuição de casos por meses',
+    subtext: 'De agosto de 2022 até agosto de 2023'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Ago22', 'Set22', 'Out22', 'Nov22', 'Dez22', 'Jan23', 'Fev23', 'Mar23', 'Abr23', 'Mai23', 'Jun23', 'Jul23', 'Ago23']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'Casos',
+      type: 'line',
+      stack: 'Total',
+      smooth: false,
+      lineStyle: {
+        width: 1
+      },
+      label: {
+        show: true,
+        position: 'top'
+      },
+      areaStyle: {
+        opacity: 0.8,
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          {
+            offset: 0,
+            color: '#7b4397'
+          },
+          {
+            offset: 1,
+            color: 'rgb(1, 191, 236)'
+          }
+        ])
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [10,10,12,14,12,7,10,17,8,6,14,23,25],
+  
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
