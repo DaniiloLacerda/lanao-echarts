@@ -35,14 +35,15 @@ export function Home() {
   const [chartOptions, setChartOptions] = useState(null);
   const [showCards, setShowCards] = useState(true);
 
-  function handleCardSelect(alias: string) {
-    setChartOptions(resolver.find((item) => item.title === alias)?.option);
+  function handleCardSelect(index: number) {
+    setChartOptions(resolver[index].option);
     setShowCards(false);
   }
   function handleBack() {
     setChartOptions(null);
     setShowCards(true);
   }
+
   return (
     <Container>
       <Header>
@@ -58,6 +59,7 @@ export function Home() {
                 key={index}
                 title={item.title}
                 handleSelect={handleCardSelect}
+                itemIndex={ index }
               />
             );
           })}
