@@ -1,6 +1,6 @@
 export const option12 = {
   title: {
-    text: "Prevalência dos sintomas apresentados pelos paciente.",
+    text: "Prevalência dos sintomas apresentados pelos pacientes.",
     left: "left",
   },
 
